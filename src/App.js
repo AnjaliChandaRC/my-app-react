@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import SubmitBtn from "./components/SubmitBtn";
+import "bootstrap/dist/css/bootstrap.min.css";
+import HomePage from "./components/HomePage";
+import FormSubmit from "./components/FormSubmit";
+
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Header} />
-          <Route exact path="/submit" component={SubmitBtn} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/submit" component={FormSubmit} />
         </Switch>
       </Router>
     </>
