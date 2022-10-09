@@ -1,7 +1,17 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const HomePage = () => {
-  return <div>HomePage</div>;
+const HomePage = ({ history }) => {
+  const logoutBtn = (e) => {
+    history.push("/sign-in");
+  };
+  return (
+    <>
+      <div>
+        <button onClick={(e) => logoutBtn(e)}>Log Out</button>
+      </div>
+    </>
+  );
 };
 
-export default HomePage;
+export default withRouter(HomePage);

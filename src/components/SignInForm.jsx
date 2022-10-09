@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { EyeClose, EyeIcon } from "../common/Icons";
+import Btn from "./Btn";
 const Form = ({ history }) => {
   const signupValue = localStorage.getItem("value");
   const [initialValue, setInitialValue] = useState({
@@ -16,15 +17,15 @@ const Form = ({ history }) => {
   const emailregex =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   const usernameregex = /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/;
-  const [changeState, setChangeState] = useState(false);
 
-  useEffect(() => {
-    // console.log("signupValu;;;;;;;;;;;e", signupValue);
+  // useEffect(() => {
+  //   console.log("signupValu;;;;;;;;;;;e", signupValue);
 
-    if (signupValue === "true") {
-      history.push("/submit");
-    }
-  }, [signupValue]);
+  //   if (signupValue === "true") {
+  //     history.push("/home");
+  //   }
+  // }, [signupValue]);
+
   const changeHandler = (e) => {
     setError(true);
     e.preventDefault();
@@ -51,14 +52,18 @@ const Form = ({ history }) => {
     }
     localStorage.setItem("value", true);
     console.log("initialValue", initialValue);
-    history.push("/submit");
+    history.push("/home");
   };
   return (
     <>
-      <section className="d-flex align-items-center min-vh-100">
-        <div className="container flex-column d-flex justify-content-center align-items-center">
-          <div>
+      <div>
+        <Btn />
+      </div>
+      <section className="mt-5">
+        <div className="container flex-column d-flex align-items-center">
+          <div className="mt-2 width_30 mt-5 pt-5">
             <input
+              className="input_bg w-100"
               type="text"
               placeholder="First Name"
               value={initialValue.firstName}
@@ -72,8 +77,9 @@ const Form = ({ history }) => {
                 : initialValue !== ""}
             </p>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 width_30">
             <input
+              className="input_bg w-100"
               type="text"
               placeholder="Last Name"
               value={initialValue.lastName}
@@ -95,8 +101,9 @@ const Form = ({ history }) => {
               {/* {console.log("sdfgh", usernameregex.test)}{" "} */}
             </p>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 width_30">
             <input
+              className="input_bg w-100"
               type="email"
               placeholder="Email"
               value={initialValue.email}
@@ -112,11 +119,11 @@ const Form = ({ history }) => {
               ""
             )}
           </div>
-          <div className="mt-2">
+          <div className="mt-2 width_30">
             <div className="position-relative">
               <div className="d-flex">
                 <input
-                  className="w-100 input_bg color_pink"
+                  className="w-100 input_bg "
                   type={showHidePassword ? "text" : "password"}
                   placeholder="Password"
                   value={initialValue.password}
@@ -141,11 +148,11 @@ const Form = ({ history }) => {
               </p>
             </div>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 width_30">
             <div className="mb-3 position-relative">
               <div className="d-flex">
                 <input
-                  className="w-100 input_bg color_pink"
+                  className="w-100 input_bg"
                   type={showConfirmHidePassword ? "text" : "password"}
                   placeholder="Confirm Password"
                   value={initialValue.confirmPassword}
@@ -179,7 +186,9 @@ const Form = ({ history }) => {
             </div>
           </div>
           <div className="mt-3 text-center">
-            <button onClick={(e) => changeHandler(e)}>Submit Form</button>
+            <button className="submit_btn" onClick={(e) => changeHandler(e)}>
+              Submit Form
+            </button>
           </div>
         </div>
       </section>
